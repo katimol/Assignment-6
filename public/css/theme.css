@@ -1,0 +1,114 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+
+
+/* Set app-wide font and gradient background */
+body, html {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #c7c6f6, #e9e9f9);
+  overflow: auto;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* -------------------------
+   Navigation Bar & Hero
+-------------------------- */
+.navbar.bg-light {
+  background: linear-gradient(to right, #b6b0de) !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Navigation Brand */
+.navbar-light .navbar-brand {
+  font-family: 'Pacifico', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #000000 !important;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Navigation Links */
+.nav-link {
+  font-size: 1rem;
+  color: #000000 !important;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #000000 !important;
+  text-decoration: underline;
+}
+
+/*    Headings    */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Pacifico', sans-serif;
+  font-weight: 600;
+  color: #000000;
+  text-shadow: 1px 1px 0 #ccc;
+}
+
+/*   Tables  */
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.table caption {
+  caption-side: top;
+  font-weight: bold;
+  padding: 0.5rem;
+  color: #6a1b9a;
+}
+
+.table th, .table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.table tr:nth-child(odd) td {
+  background: linear-gradient(to right, #f2efff, #ffffff);
+}
+
+/*   Anchor Tags (All Links)   */
+a {
+  color: #4b0082;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #2c1a5b;
+  text-decoration: underline;
+}
+
+/*   Lists   */
+ul, ol {
+  margin-left: 2rem;
+  padding-bottom: 1rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/*    Media Elements (Images, Audio, Video)   */
+img, video, audio {
+  display: block;
+  margin: 1rem auto;
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+/*   Section    */
+section {
+  background-color: #dedcff;
+  padding: 2rem 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
