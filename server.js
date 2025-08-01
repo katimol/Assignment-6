@@ -30,7 +30,7 @@ app.get("/lego/sets", async (req, res) => {
       : await legoData.getAllSets();
     res.render("sets", { sets });
   } catch (err) {
-    res.status(404).send(err);
+    res.status(404).render("404", { message: err.message });
   }
 });
 
@@ -40,7 +40,7 @@ app.get("/lego/sets/:set_num", async (req, res) => {
     const set = await legoData.getSetByNum(req.params.set_num);
     res.render("set", { set });
   } catch (err) {
-    res.status(404).send(err);
+    res.status(404).render("404", { message: err.message });
   }
 });
 
@@ -50,19 +50,17 @@ app.get("/lego/addSet", async (req, res) => {
     const themes = await legoData.getAllThemes();
     res.render("addSet", { themes });
   } catch (err) {
-    res.status(500).send("Unable to load themes");
+    res.status(500).render("500", { message: "Unable to load themes." });
   }
 });
 
 // Add set POST
 app.post("/lego/addSet", async (req, res) => {
   try {
-    const foundTheme = await legoData.getThemeById(req.body.theme_id);
-    req.body.theme = foundTheme.name;
     await legoData.addSet(req.body);
     res.redirect("/lego/sets");
   } catch (err) {
-    res.status(422).send(err);
+    res.status(500).render("500", { message: err.message });
   }
 });
 
@@ -72,13 +70,15 @@ app.get("/lego/deleteSet/:set_num", async (req, res) => {
     await legoData.deleteSetByNum(req.params.set_num);
     res.redirect("/lego/sets");
   } catch (err) {
-    res.status(404).send(err);
+    res.status(404).render("404", { message: err.message });
   }
 });
 
 // 404 Page
 app.use((req, res) => {
-  res.status(404).render("404", { page: "" });
+  res.status(404).render("404", {
+    message: "I'm sorry, we're unable to find what you're looking for."
+  });
 });
 
 // Init data + start server
