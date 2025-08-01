@@ -81,11 +81,21 @@ app.use((req, res) => {
   });
 });
 
-// Init data + start server
-legoData.initialize().then(() => {
-  app.listen(HTTP_PORT, () => {
-    console.log(`Server listening on: ${HTTP_PORT}`);
+// Local server start (only when running with `node server.js`)
+const serverReady = legoData.initialize();
+
+if (require.main === module) {
+  serverReady.then(() => {
+    app.listen(HTTP_PORT, () => {
+      console.log(`Server listening on http://localhost:${HTTP_PORT}`);
+    });
+  }).catch(err => {
+    console.error("Error initializing lego data:", err);
   });
-}).catch(err => {
-  console.log("Error initializing lego data:", err);
-});
+}
+
+// Export handler for Vercel serverless
+module.exports = async (req, res) => {
+  await serverReady;
+  app(req, res);
+};
